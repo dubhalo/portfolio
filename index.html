@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Joshua Osei – Social Media Manager & Producer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+        content="Portfolio website for social media manager and producer Joshua Osei." />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #050814;
+      --bg-alt: #0b1020;
+      --card: #11182b;
+      --accent: #ff4b8b;
+      --accent-soft: rgba(255, 75, 139, 0.13);
+      --accent-2: #4be1ff;
+      --text: #e9efff;
+      --muted: #a0a9c8;
+      --border: rgba(255, 255, 255, 0.06);
+      --shadow-soft: 0 22px 45px rgba(0, 0, 0, 0.65);
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #101735 0, #050814 55%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    /* Header / Hero */
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .nav-logo {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 28px;
+      align-items: center;
+      padding: 24px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(
+          135deg,
+          rgba(255, 75, 139, 0.15),
+          rgba(75, 225, 255, 0.08)
+        ),
+        radial-gradient(circle at top left, #1b2344 0, #050814 55%);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(75, 225, 255, 0.25), transparent);
+      top: -120px;
+      right: -80px;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .hero-main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(255, 75, 139, 0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      max-width: 560px;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.32);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease, border-color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #050814;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.65);
+    }
+
+    .btn-outline {
+      background: rgba(5, 8, 20, 0.84);
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .btn span.icon {
+      font-size: 1.1rem;
+    }
+
+    .hero-side {
+      position: relative;
+      z-index: 1;
+      justify-self: end;
+    }
+
+    .hero-card {
+      background: rgba(8, 11, 28, 0.9);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 18px 16px 16px;
+      max-width: 280px;
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .dot-stack {
+      display: flex;
+      gap: 4px;
+    }
+
+    .dot-small {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .dot-small.hot {
+      background: var(--accent);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .metric {
+      padding: 10px;
+      border-radius: var(--radius-lg);
+      background: rgba(8, 11, 28, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .metric-label {
+      font-size: 0.65rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .metric-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .metric-value span {
+      color: var(--accent-2);
+      font-size: 0.8rem;
+    }
+
+    .hero-card-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: 10px;
+      padding-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* Sections */
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .section {
+      padding: 22px 20px;
+      border-radius: var(--radius-xl);
+      background: rgba(8, 11, 28, 0.96);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .section-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* Experience */
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 16px;
+    }
+
+    .experience-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 14px 14px 12px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .experience-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at top left,
+        rgba(255, 75, 139, 0.25),
+        transparent 55%
+      );
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    .experience-card:hover::before {
+      opacity: 1;
+    }
+
+    .experience-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .company {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .location {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .role {
+      font-size: 0.85rem;
+      color: var(--accent-2);
+      margin-bottom: 4px;
+    }
+
+    .dates {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .exp-points {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .exp-points li {
+      margin-bottom: 4px;
+      position: relative;
+      padding-left: 12px;
+    }
+
+    .exp-points li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+    }
+
+    /* Education & skills */
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill-chip {
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(10, 16, 40, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 16px;
+    }
+
+    footer {
+      margin-top: 28px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+      opacity: 0.9;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-side {
+        justify-self: stretch;
+      }
+      .hero-card {
+        max-width: 100%;
+      }
+      .experience-grid,
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .page {
+        padding-inline: 14px;
+      }
+      .hero {
+        padding: 18px 16px;
+      }
+      .section {
+        padding: 18px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="nav">
+        <div class="nav-logo">JOSHUA OSEI</div>
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+
+      <section class="hero">
+        <div class="hero-main">
+          <div class="pill">
+            <span class="pill-dot"></span>
+            Open to Social Media & Content Roles
+          </div>
+
+          <h1 class="hero-title">
+            Social Media Manager <span>& Content Producer</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            I help brands turn ideas into scroll-stopping content through
+            strategy, editing, and storytelling across TikTok, Instagram,
+            YouTube, and beyond.
+          </p>
+
+          <div class="hero-tags">
+            <div class="tag">Social Media Strategy</div>
+            <div class="tag">Short-form Editing</div>
+            <div class="tag">YouTube & TikTok</div>
+            <div class="tag">Community Engagement</div>
+          </div>
+
+          <div class="hero-actions">
+            <!-- Update resume.pdf to the actual filename you upload to GitHub -->
+            <a class="btn btn-primary" href="resume.pdf" target="_blank">
+              <span class="icon">⬇️</span>
+              <span>Download Resume</span>
+            </a>
+            <a class="btn btn-outline" href="#contact">
+              <span class="icon">📬</span>
+              <span>Contact Me</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="hero-card">
+            <div class="hero-card-title">
+              Recent Focus
+              <div class="dot-stack">
+                <div class="dot-small hot"></div>
+                <div class="dot-small"></div>
+                <div class="dot-small"></div>
+              </div>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <div class="metric-label">Experience</div>
+                <div class="metric-value">
+                  5+ yrs <span>managing social content</span>
+                </div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Platforms</div>
+                <div class="metric-value">
+                  TikTok, IG, YT
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-card-footer">
+              <span>Previously @ IDG Advertising, Alan Chikin Chow, JKF</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <!-- ABOUT -->
+      <section id="about" class="section">
+        <div class="section-header">
+          <h2 class="section-title">About</h2>
+          <p class="section-kicker">
+            Story-driven, analytics-minded, team-oriented.
+          </p>
+        </div>
+        <div class="section-body">
+          <p>
+            I’ve spent years inside online communities and social feeds —
+            researching what makes people stop scrolling and building content
+            systems that deliver it consistently. I’ve worked across
+            <strong>B2B and B2C brands, creators, and YouTube channels</strong>,
+            owning pieces of strategy, editing, scheduling, and community
+            engagement.
+          </p>
+          <p style="margin-top: 8px;">
+            From helping a social media startup scale to million-subscriber
+            channels, to supporting production for brand shoots and creator
+            content, I bring both creative and operational experience to
+            every team I join.
+          </p>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="section">
+        <div class="section-header">
+          <h2 class="section-title">Experience</h2>
+          <p class="section-kicker">
+            Selected roles across agencies, creators, and digital media.
+          </p>
+        </div>
+
+        <div class="experience-grid">
+          <!-- IDG -->
+          <article class="experience-card">
+            <div class="experience-top">
+              <div>
+                <div class="company">IDG Advertising</div>
+                <div class="location">Anaheim, CA • Marketing Dept.</div>
+              </div>
+              <div class="dates">Aug 2022 – Jan 2023</div>
+            </div>
+            <div class="role">Social Media Manager</div>
+            <ul class="exp-points">
+              <li>Joined the marketing team supporting multiple B2B and B2C clients.</li>
+              <li>Developed and coordinated content strategies with a team of four.</li>
+              <li>Researched optimal posting days and times to maximize engagement.</li>
+              <li>Monitored and engaged with audiences using tailored brand voices.</li>
+              <li>Scheduled and manually posted content across client feeds.</li>
+              <li>Captured social stories and supported photo/video shoots.</li>
+            </ul>
+          </article>
+
+          <!-- Alan Chikin Chow -->
+          <article class="experience-card">
+            <div class="experience-top">
+              <div>
+                <div class="company">Alan Chikin Chow LLC</div>
+                <div class="location">Los Angeles, CA</div>
+              </div>
+              <div class="dates">Jan 2022 – May 2022</div>
+            </div>
+            <div class="role">Social Media Specialist / Video Editor</div>
+            <ul class="exp-points">
+              <li>Oversaw uploads and schedules for projects across YouTube, TikTok, Instagram, and Facebook.</li>
+              <li>Led community-focused edits, incorporating trends that drove a ~10% lift in engagement.</li>
+              <li>Developed refined cuts highlighting final outcomes for client review and feedback.</li>
+            </ul>
+          </article>
+
+          <!-- JustKiddingFilms -->
+          <article class="experience-card">
+            <div class="experience-top">
+              <div>
+                <div class="company">JustKiddingFilms</div>
+                <div class="location">Los Angeles, CA • Social Media Startup</div>
+              </div>
+              <div class="dates">2012 – 2019</div>
+            </div>
+            <div class="role">Social Media Manager, Writer & Producer</div>
+            <ul class="exp-points">
+              <li>Joined early in the marketing department of a social media startup with channels surpassing 1M subscribers.</li>
+              <li>Developed product and content strategies as lead coordinator while the team scaled.</li>
+              <li>Analyzed channel and social metrics to refine content direction for target audiences.</li>
+              <li>Optimized long-form content into fast-paced cuts for social platforms.</li>
+              <li>Created promotional trailers to build hype for upcoming releases.</li>
+            </ul>
+          </article>
+
+          <!-- Extra card – What I bring -->
+          <article class="experience-card">
+            <div class="experience-top">
+              <div>
+                <div class="company">What I Bring</div>
+                <div class="location">Content • Systems • Collaboration</div>
+              </div>
+              <div class="dates">Now</div>
+            </div>
+            <div class="role">Social Media & Content Partner</div>
+            <ul class="exp-points">
+              <li>Blend of creative storytelling with practical, repeatable workflows.</li>
+              <li>Comfortable working across teams — marketing, production, creators, and clients.</li>
+              <li>Hands-on with editing tools, analytics, and day-to-day social execution.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- EDUCATION & SKILLS -->
+      <section id="skills" class="section">
+        <div class="section-header">
+          <h2 class="section-title">Education & Skills</h2>
+          <p class="section-kicker">
+            A mix of formal education and self-taught digital skills.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div>
+            <h3 style="font-size:0.95rem; margin-bottom:6px;">Education</h3>
+            <div class="section-body" style="margin-bottom:10px;">
+              <strong>Gabrielino High School</strong><br />
+              San Gabriel, CA
+            </div>
+            <div class="section-body">
+              <strong>Pasadena City College</strong><br />
+              Pasadena, CA
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-size:0.95rem; margin-bottom:6px;">Core Skills</h3>
+            <div class="pill-list">
+              <span class="pill-chip">Social Media Content Creation</span>
+              <span class="pill-chip">Video Editing</span>
+              <span class="pill-chip">Digital Photography</span>
+              <span class="pill-chip">Graphic Design</span>
+              <span class="pill-chip">Adobe Creative Suite</span>
+              <span class="pill-chip">CapCut</span>
+              <span class="pill-chip">Final Cut Pro</span>
+              <span class="pill-chip">On-Camera Talent</span>
+              <span class="pill-chip">Microsoft Excel</span>
+              <span class="pill-chip">PowerPoint</span>
+              <span class="pill-chip">Prompt Engineering</span>
+              <span class="pill-chip">ChatGPT & Kling AI</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section">
+        <div class="section-header">
+          <h2 class="section-title">Contact</h2>
+          <p class="section-kicker">
+            Let’s talk about how I can support your team’s content and social goals.
+          </p>
+        </div>
+        <div class="section-body">
+          <p style="margin-bottom:10px;">
+            Feel free to reach out for roles, collaborations, or freelance projects.
+          </p>
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:joseiujima@gmail.com">joseiujima@gmail.com</a>
+          </p>
+          <p>
+            <strong>LinkedIn:</strong>
+            <a href="https://www.linkedin.com/in/joshuaosei" target="_blank">
+              linkedin.com/in/joshuaosei
+            </a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Joshua Osei. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    // Auto-set current year in footer
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
