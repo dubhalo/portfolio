@@ -1,0 +1,17 @@
+# macOS / misc
+.DS_Store
+
+# Node
+node_modules/
+backend/lib/
+backend/.firebase/
+
+# Android / Gradle
+.gradle/
+**/build/
+local.properties
+.idea/
+*.iml
+
+# Logs
+*.log
